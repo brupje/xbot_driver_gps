@@ -31,11 +31,11 @@ xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(pa
     gps.onUpdate += [this]() {
         auto &fix = this->gps.fix;
 
-        if(fix.type != 2 && fix.type != 3) {
+        /*if(fix.type != 2 && fix.type != 3) {
             gps_state_valid_ = false;
             log(std::string("invalid gnssFix - dropping message. fix was: ") + std::to_string(fix.type), WARN);
             return;
-        }
+        }*/
 
         if(fix.quality == 0) {
             gps_state_valid_ = false;
