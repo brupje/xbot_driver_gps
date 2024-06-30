@@ -44,7 +44,7 @@ xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(pa
             return;
         }
 
-        log("Received NMEA packet " + std::to_string(gps_state_.fix_type ) + " / "+ std::to_string(gps_state_.rtk_type ), WARN);
+        log("Received NMEA packet " + std::to_string(fix.type ) + " / "+ std::to_string( fix.rtk_type ), INFO);
 
         switch (fix.type) {
             case 2:
