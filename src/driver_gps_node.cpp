@@ -186,7 +186,7 @@ void convert_gps_result(const GpsInterface::GpsState &state, xbot_msgs::Absolute
 
 void gps_state_received(const GpsInterface::GpsState &state) {
     // new state received, publish
-    ROS_INFO_STREAM("Send GPS state");
+
     convert_gps_result(state, pose_result);
     xbot_pose_pub.publish(pose_result);
     pose_pub.publish(pose_result.pose);

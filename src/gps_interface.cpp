@@ -85,7 +85,7 @@ namespace xbot {
                         log("we don't have the tx lock!", ERROR);
                     }
 
-                    log(std::string("writing ") + std::to_string(tx_buffer_.size()) + " bytes of data", VERBOSE);
+                    //log(std::string("writing ") + std::to_string(tx_buffer_.size()) + " bytes of data", VERBOSE);
                     if (!serial_.isOpen()) {
                         log("serial is closed, dropping data", WARN);
                         continue;
