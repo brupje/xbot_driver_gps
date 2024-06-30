@@ -53,7 +53,7 @@ namespace xbot {
                 std::unique_lock<std::mutex> lk(tx_mutex_);
                 auto millis = duration_cast<milliseconds>(steady_clock::now() - start).count();
 
-                if (millis > 10) {
+                if (millis > 20) {
                     log("waited " + std::to_string(millis) +
                         " ms to write to the tx buffer, serial port is probably congested!", ERROR);
                 }
@@ -291,6 +291,8 @@ namespace xbot {
 
 
             void GpsInterface::send_rtcm(const uint8_t *data, size_t size) {
+                log("Received rtcm (" +  std::to_string(size) + ")",INFO);
+
                 send_raw(data,size);
             }
         }

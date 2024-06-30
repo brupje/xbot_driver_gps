@@ -120,6 +120,7 @@ void wheel_tick_received(const xbot_msgs::WheelTick::ConstPtr &msg) {
 }
 
 void rtcm_received(const rtcm_msgs::Message::ConstPtr &rtcm) {
+    log()
     gpsInterface->send_rtcm(rtcm->message.data(), rtcm->message.size());
 }
 

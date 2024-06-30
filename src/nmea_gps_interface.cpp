@@ -28,7 +28,7 @@ size_t xbot::driver::gps::NmeaGpsInterface::parse_rx_buffer() {
 }
 
 xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(parser) {
-    parser.log = true;
+
     gps.onUpdate += [this]() {
         auto &fix = this->gps.fix;
 
