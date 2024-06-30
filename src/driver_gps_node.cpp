@@ -35,7 +35,7 @@ ros::Publisher vrs_nmea_pub;
 bool isUbxInterface = false;
 GpsInterface *gpsInterface;
 
-bool allow_verbose_logging = false;
+bool allow_verbose_logging = true;
 xbot_msgs::AbsolutePose pose_result;
 
 std_msgs::UInt32 latency_msg1, latency_msg2, latency_msg3;
@@ -91,9 +91,7 @@ void generate_nmea(double lat_in, double lon_in) {
 void gps_log(std::string text, GpsInterface::Level level) {
     switch (level) {
         case GpsInterface::Level::VERBOSE:
-            if (!allow_verbose_logging) {
-                return;
-            }
+
             ROS_INFO_STREAM("[driver_gps] " << text);
             break;
         case GpsInterface::Level::INFO:
