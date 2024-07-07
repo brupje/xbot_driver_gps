@@ -92,7 +92,7 @@ void gps_log(std::string text, GpsInterface::Level level) {
     switch (level) {
         case GpsInterface::Level::VERBOSE:
 
-            ROS_INFO_STREAM("[driver_gps] " << text);
+            ROS_DEBUG_STREAM("[driver_gps] " << text);
             break;
         case GpsInterface::Level::INFO:
             ROS_INFO_STREAM("[driver_gps] " << text);
