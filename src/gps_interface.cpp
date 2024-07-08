@@ -291,7 +291,7 @@ namespace xbot {
 
 
             void GpsInterface::send_rtcm(const uint8_t *data, size_t size) {
-                log("Received rtcm (" +  std::to_string(size) + ")",DEBUG);
+                //log("Received rtcm (" +  std::to_string(size) + ")",DEBUG);
 
                 send_raw(data,size);
             }
