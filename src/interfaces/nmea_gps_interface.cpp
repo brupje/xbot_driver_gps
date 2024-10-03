@@ -105,4 +105,5 @@ xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(pa
 
         if (state_callback)
             state_callback(gps_state_);
+    };
 }
