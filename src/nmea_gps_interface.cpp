@@ -57,9 +57,7 @@ xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(pa
             case 4:
                 gps_state_.fix_type = GpsState::FixType::FIX_3D;
                 break;
-            case 1:
-                gps_state_.fix_type = GpsState::FixType::FIX_3D;
-                break;
+ 
             default:
                 gps_state_.fix_type = GpsState::FixType::NO_FIX;
                 break;
