@@ -30,6 +30,7 @@ size_t xbot::driver::gps::NmeaGpsInterface::parse_rx_buffer() {
 xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(parser) {
 
     gps.onUpdate += [this]() {
+
         auto &fix = this->gps.fix;
 
         /*if(fix.type != 2 && fix.type != 3) {
@@ -44,8 +45,7 @@ xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(pa
             return;
         }
 
-        log("Received NMEA packet " + std::to_string(fix.type ) + " / "+ std::to_string( fix.quality ) + " quality: " + std::to_string((double) sqrt(
-                pow(fix.horizontalAccuracy(), 2) + pow(fix.verticalAccuracy(), 2))), INFO);
+        log("Received NMEA packet fixtype " + std::to_string(fix.type ) + " /  fixquality"+ std::to_string( fix.quality ) + " quality: " + std::to_string(fix.horizontalAccuracy()), INFO);
 
         switch (fix.type) {
             case 2:
@@ -86,7 +86,7 @@ xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(pa
         gps_state_.pos_n = n - datum_n_;
         gps_state_.pos_u = fix.altitude - datum_u_;
 
-        gps_state_.position_accuracy = fix.horizontalAccuracy();
+        gps_state_.position_accuracy = 0.1; //fix.horizontalAccuracy();
 
         // speed in m/s
         double speed = fix.speed / 3.6;
