@@ -236,8 +236,19 @@ int main(int argc, char **argv) {
 
 
     std::string protocol;
-    bool chosen_protocol = "NMEA";
  
+
+    std::string chosen_protocol = "NMEA";
+    if (has_protocol) {
+        // Normalize case
+        std::transform(protocol.begin(), protocol.end(), protocol.begin(),
+                       [](unsigned char c){ return static_cast<char>(std::toupper(c)); });
+        chosen_protocol = protocol;
+    } else {
+        // Backward compatibility with legacy ubx_mode
+        chosen_protocol = ubx_mode ? "UBX" : "NMEA";
+        ROS_INFO("Using legacy 'ubx_mode' to select protocol: %s", chosen_protocol.c_str());
+    }
 
 
     if(chosen_protocol == "UBX") {
