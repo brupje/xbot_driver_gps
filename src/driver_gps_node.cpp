@@ -236,7 +236,7 @@ int main(int argc, char **argv) {
 
 
     std::string protocol;
-    bool has_protocol = paramNh.getParam("protocol", protocol);
+    bool has_protocol = "NMEA";
     bool ubx_mode = false;
     bool has_ubx_mode = paramNh.getParam("ubx_mode", ubx_mode);
 
