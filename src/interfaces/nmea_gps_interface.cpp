@@ -45,7 +45,9 @@ xbot::driver::gps::NmeaGpsInterface::NmeaGpsInterface() : GpsInterface(), gps(pa
             return;
         }
 
-        log("Received NMEA packet fixtype " + std::to_string(fix.type ) + " /  fixquality"+ std::to_string( fix.quality ) + " quality: " + std::to_string(fix.horizontalAccuracy()), INFO);
+
+        if (fix.quality !=4)
+            log("Received NMEA packet fixtype " + std::to_string(fix.type ) + " /  fixquality"+ std::to_string( fix.quality ) + " quality: " + std::to_string(fix.horizontalAccuracy()), INFO);
 
         switch (fix.type) {
             case 2:
