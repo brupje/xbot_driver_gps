@@ -236,30 +236,8 @@ int main(int argc, char **argv) {
 
 
     std::string protocol;
-    bool has_protocol = "NMEA";
-    bool ubx_mode = false;
-    bool has_ubx_mode = paramNh.getParam("ubx_mode", ubx_mode);
-
-    if (!has_protocol && !has_ubx_mode) {
-        ROS_ERROR("Neither 'protocol' nor 'ubx_mode' parameter provided. Set 'protocol' (e.g., 'UBX' or 'NMEA') or legacy 'ubx_mode'. Exiting.");
-        return 1;
-    }
-
-    if (has_protocol && has_ubx_mode) {
-        ROS_WARN("Both 'protocol' and 'ubx_mode' are set. using 'protocol' and ignoring 'ubx_mode'.");
-    }
-
-    std::string chosen_protocol;
-    if (has_protocol) {
-        // Normalize case
-        std::transform(protocol.begin(), protocol.end(), protocol.begin(),
-                       [](unsigned char c){ return static_cast<char>(std::toupper(c)); });
-        chosen_protocol = protocol;
-    } else {
-        // Backward compatibility with legacy ubx_mode
-        chosen_protocol = ubx_mode ? "UBX" : "NMEA";
-        ROS_INFO("Using legacy 'ubx_mode' to select protocol: %s", chosen_protocol.c_str());
-    }
+    bool chosen_protocol = "NMEA";
+ 
 
 
     if(chosen_protocol == "UBX") {
